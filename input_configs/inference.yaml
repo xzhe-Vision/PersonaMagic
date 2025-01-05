@@ -1,0 +1,9 @@
+input_dir: ./logs/person_1
+prompts_file_path: ./inference_text.txt
+clip_ckpt_path: "/path/to/clip/ckpt/"
+iteration: 1000
+seeds: [ 233, 234, 235, 236 ]
+torch_dtype: fp16
+inference_dir: ./results/
+super_category_token: face
+image_path: ./data/person_1/person_1.jpg

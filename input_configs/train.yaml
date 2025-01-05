@@ -1,0 +1,23 @@
+log:
+  exp_name: person_1
+  exp_dir: ./log/person_1
+  save_steps: 1000
+data:
+  train_data_dir: ./data/person_1
+  placeholder_token: <new>
+  super_category_token: face
+  dataloader_num_workers: 2
+model:
+  pretrained_model_name_or_path: /path/to/diffusion/dreamlike-artdreamlike-photoreal-2.0/
+  clip_ckpt_path: "/path/to/clip/ckpt/"
+  normalize_mapper_output: True
+  use_positional_encoding: True
+  num_pe_time_anchors: 200
+  output_bypass: True
+eval:
+  validation_steps: 2000
+optim:
+  max_train_steps: 1000
+  learning_rate: 5e-5
+  train_batch_size: 1
+  gradient_accumulation_steps: 2
