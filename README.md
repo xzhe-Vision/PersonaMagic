@@ -59,7 +59,7 @@ wget "https://openaipublic.azureedge.net/clip/models/5806e77cd80f8b59890b7e101ea
 
 ```
 ## Training
-To train your own concept, you need to prepare at least one image and use clipseg to generate the corresponding mask. For example:
+To train your own concept, you need to prepare at least one image and use [clipseg](https://github.com/timojl/clipseg) to generate the corresponding mask. For example:
 ```
 python scripts/seg.py --image_dir data/person_1/ --super_class 'face'
 ```
@@ -67,12 +67,13 @@ Notes:
 - `image_dir` should be the path to an image or a folder.
 - `super_class` should be the class of the concept.
 
-You need to set a config file specifying all training parameters, and then run the following command:
+Then you need to set a config file specifying all training parameters, and run the following command:
 ```
 python scripts/train.py --config_path input_configs/train.yaml
 ```
 Notes:
 - All training arguments can be found in the `RunConfig` class in `training/config.py`.
+- `exp_dir` : the path to save checkpoints.
 - `train_data_dir` : image folder for training.
 - `pretrained_model_name_or_path`: pretrained Stable Diffusion v1.4 model or dreamlike-photoreal-2.0 model.
 - `clip_ckpt_path` : the path of pre-trained clip checkpoints.
@@ -82,8 +83,9 @@ Run the following command for inference:
 python scripts/inference.py --config_path input_configs/inference.yaml
 ```
 Notes:
-- pass an `input_dir` and `iteration` to extract the corresponding checkpoint
+- pass an `input_dir` and `iteration` to extract the corresponding checkpoint.
 - `prompts_file_path` is a text file for specifying the prompts.
+- results will be saved in `inference_dir`.
 
 # Acknowledgements
 Our code references the implementation of [NeTI](https://github.com/NeuralTextualInversion/NeTI) and [diffusers implementation of textual inversion](https://github.com/huggingface/diffusers/tree/main/examples/textual_inversion). Thanks for their awesome works.
